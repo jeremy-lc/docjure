@@ -7,3 +7,4 @@ test/docjure/testdata/~$*.xlsx
 ~$*.xlsx
 
 .nrepl-port
+.lein-repl-history

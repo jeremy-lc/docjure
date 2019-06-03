@@ -2,7 +2,7 @@
   (:use [dk.ative.docjure.spreadsheet] :reload-all)
   (:use [clojure.test])
   (:require [cemerick.pomegranate :as pomegranate]
-           [clojure.java.io :as io])
+            [clojure.java.io :as io])
   (:import (org.apache.poi.ss.usermodel Workbook Row
                                         Row$MissingCellPolicy
                                         CellStyle IndexedColors Font
@@ -503,7 +503,7 @@
       (let [wb (create-xls-workbook "Dummy" [["foo"]])
             cs (create-cell-style! wb {:border-left :thin
                                        :border-right :medium
-                                       :border-top :thick 
+                                       :border-top :thick
                                        :border-bottom :thin
                                        :left-border-color :red
                                        :right-border-color :blue
@@ -820,12 +820,12 @@
       (test-loaded-workbook loaded)))
   (testing "Saving workbook into a stream"
     (let [file (config :save-workbook-location)
-          stream (io/output-stream file)
-          workbook (create-workbook "Sheet 1" [["A1" "B1" "C1"]])
-          _ (save-workbook! stream workbook)
-          loaded (load-workbook file)
-          _ (io/delete-file file)]
-      (test-loaded-workbook loaded))))
+          workbook (create-workbook "Sheet 1" [["A1" "B1" "C1"]])]
+      (with-open [stream (io/output-stream file)]
+        (save-workbook! stream workbook))
+      (let [loaded (load-workbook file)]
+        (io/delete-file file)
+        (test-loaded-workbook loaded)))))
 
 (defn- datatypes-rows [file]
   (->> (load-workbook-from-file file)
