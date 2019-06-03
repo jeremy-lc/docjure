@@ -3,6 +3,17 @@
 ## Version 1.14.0-SNAPSHOT
 * Added a font cache to create-date-format to prevent overflowing the number
   of styles in the document by reusing the styles.
+* Added add-merged-region! to merge cells
+* Improve design to support font index as getter
+* Clean breaking test
+* Upgrade to Docjure 4.1.0
+* Add set-cell-style-properties! to wrap CellUtil convenient method
+* Allow to set column width in pixels (approximate naive formula)
+* More flexible functions, especially with index-based operations
+* Added set-cells! to write raw data to an excel square area
+* Reorganized code to locate functions quickly
+
+* (BETA) Added set-column-default-styles! to wrap ColumnHelper utility
 
 ## Version 1.13.0
 * Dropped support for Clojure 1.3 and 1.4.
